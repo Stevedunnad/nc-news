@@ -4,7 +4,8 @@ import * as api from '../utils/api'
 class Articles extends Component {
   state = {
     articles: [],
-    sortedBy: 'created_at'
+    sortedBy: 'created_at',
+    topic: ''
   }
 
   async componentDidMount() {
@@ -25,6 +26,12 @@ class Articles extends Component {
     })
   }
 
+  changeTopic = async (topic) => {
+    this.setState({
+      topic: topic
+    })
+  }
+
   fetchArticles = async (sortedBy) => {
     this.setState({
       articles: await api.getAllArticles(sortedBy)
@@ -34,6 +41,13 @@ class Articles extends Component {
   render() {
     return (
       <div>
+        <div>
+          <h2>Topic is {this.state.topic}</h2>
+          <button onClick={() => this.changeTopic('')}>all</button>
+          <button onClick={() => this.changeTopic('coding')}>coding</button>
+          <button onClick={() => this.changeTopic('cooking')}>cooking</button>
+          <button onClick={() => this.changeTopic('football')}>football</button>
+        </div>
         <div>
           <h2>Sort by {this.state.sortedBy}</h2>
           <button onClick={() => this.changeSortedBy('created_at')}>Date</button>
