@@ -3,7 +3,8 @@ import * as api from '../utils/api'
 
 class Articles extends Component {
   state = {
-    articles: []
+    articles: [],
+    sortedBy: 'created_at'
   }
 
   async componentDidMount() {
@@ -18,17 +19,21 @@ class Articles extends Component {
   //   console.log('updated')
   // }
 
-
+  changeSortedBy = (sorted_by) => {
+    this.setState({
+      sortedBy: sorted_by
+    })
+  }
 
   render() {
     return (
       <div>
         <div>
-          <h2>Sort by</h2>
-          <div>Date</div>
-          <div>Author</div>
-          <div>Topic</div>
-          <div>Vote</div>
+          <h2>Sort by {this.state.sortedBy}</h2>
+          <button onClick={() => this.changeSortedBy('created_at')}>Date</button>
+          <button onClick={() => this.changeSortedBy('author')}>Author</button>
+          <button onClick={() => this.changeSortedBy('topic')}>Topic</button>
+          <button onClick={() => this.changeSortedBy('vote')}>Vote</button>
         </div>
         {this.state.articles.map(article => <article><h2>{article.title}</h2><p>{article.body}</p></article>)}
       </div>
