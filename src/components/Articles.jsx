@@ -4,9 +4,14 @@ class Articles extends Component {
   state = {}
 
   componentDidMount() {
-    console.log('hello')
-    
+    console.log('mounted')
   }
+
+  // componentDidUpdate() {
+  //   console.log('updated')
+  // }
+
+  
 
   render() {
     return (
