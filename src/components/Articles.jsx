@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as api from '../utils/api'
+import Article from './Article'
 
 class Articles extends Component {
   state = {
@@ -55,13 +56,7 @@ class Articles extends Component {
           <button onClick={() => this.changeSortedBy('topic')}>Topic</button>
           <button onClick={() => this.changeSortedBy('votes')}>Vote</button>
         </div>
-        {this.state.articles.map(article => <article>
-          <h2>{article.title}</h2>
-          <p>{article.created_at}</p>
-          <p>{article.author}</p>
-          <p>{article.votes} votes</p>
-          <p>{article.body}</p>
-        </article>)}
+        {this.state.articles.map(article => <Article article={article}></Article>)}
       </div>
     );
   }
