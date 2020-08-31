@@ -43,7 +43,7 @@ class Articles extends Component {
     return (
       <div>
         <div>
-          <h2>Topic is {this.state.topic}</h2>
+          <h2>Topic is {this.state.topic || 'all'}</h2>
           <button onClick={() => this.changeTopic('')}>all</button>
           <button onClick={() => this.changeTopic('coding')}>coding</button>
           <button onClick={() => this.changeTopic('cooking')}>cooking</button>
@@ -53,7 +53,7 @@ class Articles extends Component {
           <h2>Sort by {this.state.sortedBy}</h2>
           <button onClick={() => this.changeSortedBy('created_at')}>Date</button>
           <button onClick={() => this.changeSortedBy('author')}>Author</button>
-          <button onClick={() => this.changeSortedBy('topic')}>Topic</button>
+          {!this.state.topic && <button onClick={() => this.changeSortedBy('topic')}>Topic</button>}
           <button onClick={() => this.changeSortedBy('votes')}>Vote</button>
         </div>
         {this.state.articles.map(article => <Article article={article}></Article>)}
