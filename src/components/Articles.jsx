@@ -2,17 +2,21 @@ import React, { Component } from 'react';
 
 class Articles extends Component {
   state = {
-    articles: []
+    thing: []
   }
 
   componentDidMount() {
     console.log('hello my friend')
     this.setState({
-      articles: [{
-        article_id: 1,
-        title: 'articley stuff',
-        body: 'body'
-      }]
+      thing: [{
+        title: 'sfdgsdfg',
+        body: 2123
+      },
+      {
+        title: 1,
+        body: 2123
+      }
+      ]
     })
     console.log('the state is', this.state)
   }
@@ -21,12 +25,11 @@ class Articles extends Component {
   //   console.log('updated')
   // }
 
-  
+
 
   render() {
     return (
       <div>
-        {this.state.articles.map(article => <div key={article.article_id}>hello</div>)}
         <div>
           <h2>Sort by</h2>
           <div>Date</div>
@@ -34,10 +37,7 @@ class Articles extends Component {
           <div>Topic</div>
           <div>Vote</div>
         </div>
-        <article>
-          <h3>Title</h3>
-          <p>Body</p>
-        </article>
+        {this.state.thing.map(athing => <article><h2>{athing.title}</h2><p>{athing.body}</p></article>)}
       </div>
     );
   }
