@@ -1,22 +1,15 @@
 import React, { Component } from 'react';
+import * as api from '../utils/api'
 
 class Articles extends Component {
   state = {
     articles: []
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     console.log('hello my friend')
     this.setState({
-      articles: [{
-        title: 'sfdgsdfg',
-        body: 2123
-      },
-      {
-        title: 1,
-        body: 2123
-      }
-      ]
+      articles: await api.getAllArticles()
     })
     console.log('the state is', this.state)
   }
