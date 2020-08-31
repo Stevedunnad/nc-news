@@ -10,13 +10,13 @@ class Articles extends Component {
 
   async componentDidMount() {
     console.log('hello my friend')
-    this.fetchArticles(this.state.sortedBy)
+    this.fetchArticles(this.state.sortedBy, this.state.topic)
     console.log('the state is', this.state)
   }
 
   async componentDidUpdate(prevProps, prevState) {
-    if (prevState.sortedBy !== this.state.sortedBy) {
-      await this.fetchArticles(this.state.sortedBy)
+    if (prevState.sortedBy !== this.state.sortedBy || prevState.topic !== this.state.topic) {
+      await this.fetchArticles(this.state.sortedBy, this.state.topic)
     }
   }
 
@@ -32,9 +32,9 @@ class Articles extends Component {
     })
   }
 
-  fetchArticles = async (sortedBy) => {
+  fetchArticles = async (sortedBy, topic) => {
     this.setState({
-      articles: await api.getAllArticles(sortedBy)
+      articles: await api.getAllArticles(sortedBy, topic)
     })
   }
 
