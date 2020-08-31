@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 
 class Articles extends Component {
   state = {
-    thing: []
+    articles: []
   }
 
   componentDidMount() {
     console.log('hello my friend')
     this.setState({
-      thing: [{
+      articles: [{
         title: 'sfdgsdfg',
         body: 2123
       },
@@ -37,7 +37,7 @@ class Articles extends Component {
           <div>Topic</div>
           <div>Vote</div>
         </div>
-        {this.state.thing.map(athing => <article><h2>{athing.title}</h2><p>{athing.body}</p></article>)}
+        {this.state.articles.map(article => <article><h2>{article.title}</h2><p>{article.body}</p></article>)}
       </div>
     );
   }
