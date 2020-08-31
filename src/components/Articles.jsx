@@ -9,19 +9,25 @@ class Articles extends Component {
 
   async componentDidMount() {
     console.log('hello my friend')
-    this.setState({
-      articles: await api.getAllArticles()
-    })
+    this.fetchArticles(this.state.sortedBy)
     console.log('the state is', this.state)
   }
 
-  // componentDidUpdate = () => {
-  //   console.log('updated')
-  // }
+  async componentDidUpdate(prevProps, prevState) {
+    if (prevState.sortedBy !== this.state.sortedBy) {
+      await this.fetchArticles(this.state.sortedBy)
+    }
+  }
 
-  changeSortedBy = (sorted_by) => {
+  changeSortedBy = async (sorted_by) => {
     this.setState({
       sortedBy: sorted_by
+    })
+  }
+
+  fetchArticles = async (sortedBy) => {
+    this.setState({
+      articles: await api.getAllArticles(sortedBy)
     })
   }
 
@@ -33,9 +39,15 @@ class Articles extends Component {
           <button onClick={() => this.changeSortedBy('created_at')}>Date</button>
           <button onClick={() => this.changeSortedBy('author')}>Author</button>
           <button onClick={() => this.changeSortedBy('topic')}>Topic</button>
-          <button onClick={() => this.changeSortedBy('vote')}>Vote</button>
+          <button onClick={() => this.changeSortedBy('votes')}>Vote</button>
         </div>
-        {this.state.articles.map(article => <article><h2>{article.title}</h2><p>{article.body}</p></article>)}
+        {this.state.articles.map(article => <article>
+          <h2>{article.title}</h2>
+          <p>{article.created_at}</p>
+          <p>{article.author}</p>
+          <p>{article.votes} votes</p>
+          <p>{article.body}</p>
+        </article>)}
       </div>
     );
   }
