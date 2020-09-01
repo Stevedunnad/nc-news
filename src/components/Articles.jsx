@@ -10,7 +10,6 @@ class Articles extends Component {
   }
 
   async componentDidMount() {
-    console.log('hello my friend')
     this.fetchArticles(this.state.sortedBy, this.state.topic)
     console.log('the state is', this.state)
   }
