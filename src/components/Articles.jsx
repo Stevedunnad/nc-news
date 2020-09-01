@@ -58,7 +58,7 @@ class Articles extends Component {
           <button onClick={() => this.changeSortedBy('author')}>Author</button>
           {!this.state.topic && <button onClick={() => this.changeSortedBy('topic')}>Topic</button>}
           <button onClick={() => this.changeSortedBy('votes')}>Vote</button>
-        </div>
+        </div >
         {this.state.articles.map(article => <Article article={article}></Article>)}
       </div>
     );
