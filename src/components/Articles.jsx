@@ -5,6 +5,7 @@ import Article from './Article'
 class Articles extends Component {
   state = {
     articles: [],
+    isLoading: true,
     sortedBy: 'created_at',
     topic: ''
   }
@@ -22,19 +23,22 @@ class Articles extends Component {
 
   changeSortedBy = async (sorted_by) => {
     this.setState({
-      sortedBy: sorted_by
+      sortedBy: sorted_by,
+      isLoading: false
     })
   }
 
   changeTopic = async (topic) => {
     this.setState({
-      topic: topic
+      topic: topic,
+      isLoading: false
     })
   }
 
   fetchArticles = async (sortedBy, topic) => {
     this.setState({
-      articles: await api.getAllArticles(sortedBy, topic)
+      articles: await api.getAllArticles(sortedBy, topic),
+      isLoading: false
     })
   }
 
