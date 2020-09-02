@@ -32,3 +32,12 @@ export const patchArticleVotes = (id, votes, type) => {
     console.log('data from patchArticleVotes->', data)
   })
 }
+
+export const getArticleComments = (article_id, sort_by, votes) => {
+  return axiosInstance
+  .get(`/articles/${article_id}/comments`, {params: {sort_by, votes}})
+  .then(res => {
+    console.log('res.data.comments ->', res.data.comments)
+    return res.data.comments
+  })
+}
