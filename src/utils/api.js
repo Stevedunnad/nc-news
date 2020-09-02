@@ -18,11 +18,8 @@ export const getAllArticles = (sort_by, topic) => {
 
 export const getSingleArticle = (article_id) => {
   return axiosInstance
-  .get('/articles/:article_id')
-  .then(res => {
-    console.log('single article ->', res.data.articles.article_id)
-    return res.data.articles.article_id
-  })
+  .get(`/articles/${article_id}`)
+  .then(({data: {article}}) => article)
   .catch((error) => {
     console.log(error)
   })
