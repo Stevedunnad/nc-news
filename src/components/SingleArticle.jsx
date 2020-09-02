@@ -17,13 +17,27 @@ export default class SingleArticle extends Component {
   }
 
   render() {
-    console.log('hey, props ->', this.props)
-    const {isLoading, article} = this.state
+    const {isLoading} = this.state
     if (isLoading) return <Loader />
+
+    const {
+      article_id, 
+      title, 
+      body, 
+      created_at, 
+      votes, 
+      topic, 
+      author, 
+      comment_count} = this.state.article;
+
     return (
-      <div>
-        <h1>Single article</h1>
-      </div>
+      <article>
+      <h2>{title}</h2>
+      <p>{created_at}</p>
+      <p>{author}</p>
+      <p>{votes} votes</p>
+      <p>{body}</p>
+    </article>
     )
   }
 }
