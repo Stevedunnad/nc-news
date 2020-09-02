@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import * as api from '../utils/api'
 import Loader from './Loader'
+import VoteCaster from './VoteCaster'
 
 export default class SingleArticle extends Component {
 
@@ -33,6 +34,7 @@ export default class SingleArticle extends Component {
       comment_count} = this.state.article;
 
     return (
+      <>
       <article>
       <h2>{title}</h2>
       <p>{created_at}</p>
@@ -40,6 +42,8 @@ export default class SingleArticle extends Component {
       <p>{votes} votes</p>
       <p>{body}</p>
     </article>
+    <VoteCaster />
+    </>
     )
   }
 }
