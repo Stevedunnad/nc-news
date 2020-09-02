@@ -4,6 +4,7 @@ import './App.css';
 import Articles from './components/Articles'
 import Home from './components/Home'
 import Topics from './components/Topics'
+import SingleArticle from './components/SingleArticle'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
           <Home path="/" />
           <Articles path="/articles" />
           <Topics path="/topics" />
+          <SingleArticle path="/articles/:article_id" />
         </Router>
         
       </main>
