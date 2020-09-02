@@ -1,10 +1,10 @@
 import React from 'react';
 
-const VoteCaster = () => {
+const VoteCaster = ({article_id, votes}) => {
   return (
     <section>
       <button>yes!</button>
-      votes show here
+      {votes}
       <button>no!</button>
     </section>
   );

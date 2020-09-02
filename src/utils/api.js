@@ -24,3 +24,8 @@ export const getSingleArticle = (article_id) => {
     console.log(error)
   })
 }
+
+export const patchArticleVotes = (article_id, votes) => {
+  return axiosInstance
+  .patch(`/articles/${article_id}`, {votes})
+}

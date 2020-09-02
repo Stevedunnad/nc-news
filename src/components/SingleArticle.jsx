@@ -21,7 +21,6 @@ export default class SingleArticle extends Component {
   render() {
     const {isLoading} = this.state
     if (isLoading) return <Loader />
-    console.log(this.state)
     const {
       
       article_id, 
@@ -42,7 +41,7 @@ export default class SingleArticle extends Component {
       <p>{votes} votes</p>
       <p>{body}</p>
     </article>
-    <VoteCaster />
+    <VoteCaster article_id={article_id} votes={votes} />
     </>
     )
   }
