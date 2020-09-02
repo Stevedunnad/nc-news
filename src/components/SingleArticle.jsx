@@ -7,7 +7,7 @@ export default class SingleArticle extends Component {
 
   state = {
     article: {},
-    isLoading: true
+    isLoading: true,
   }
 
   componentDidMount() {
@@ -27,10 +27,8 @@ export default class SingleArticle extends Component {
       title, 
       body, 
       created_at, 
-      votes, 
-      topic, 
-      author, 
-      comment_count} = this.state.article;
+      votes,
+      author,} = this.state.article;
 
     return (
       <>
@@ -38,10 +36,9 @@ export default class SingleArticle extends Component {
       <h2>{title}</h2>
       <p>{created_at}</p>
       <p>{author}</p>
-      <p>{votes} votes</p>
       <p>{body}</p>
     </article>
-    <VoteCaster article_id={article_id} votes={votes} />
+    <VoteCaster id={article_id} votes={votes} type={"articles"} />
     </>
     )
   }

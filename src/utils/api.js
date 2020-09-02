@@ -25,7 +25,10 @@ export const getSingleArticle = (article_id) => {
   })
 }
 
-export const patchArticleVotes = (article_id, votes) => {
+export const patchArticleVotes = (id, votes, type) => {
   return axiosInstance
-  .patch(`/articles/${article_id}`, {votes})
+  .patch(`/${type}/${id}`, { inc_votes: votes })
+  .then(({data}) => {
+    console.log('data from patchArticleVotes->', data)
+  })
 }

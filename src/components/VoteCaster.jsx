@@ -1,19 +1,41 @@
 import React from 'react';
 import * as api from '../utils/api'
 
-const VoteCaster = ({article_id, votes}) => {
+class VoteCaster extends React.Component {
 
-  const incrementVote = (e) => {
-    api.patchArticleVotes(article_id, 1)
+  state = {
+    optimisticVotes: 0
   }
 
-  return (
-    <section>
-      <button onClick={incrementVote}>yes!</button>
-      {votes}
-      <button>no!</button>
-    </section>
-  );
+  changeVote = (vote) => {
+    api.patchArticleVotes(this.props.id, vote, this.props.type)
+    this.setState(currentState => {
+      return {optimisticVotes: currentState.optimisticVotes + vote}
+    })
+  }
+
+  render () {
+    const { votes } = this.props;
+    const { optimisticVotes } = this.state;
+    return (
+      <section>
+
+        <button onClick={(e) => {this.changeVote(-1)}}
+          disabled = {optimisticVotes === -1}>
+          vote -
+          </button>
+
+          {' '}{ votes + optimisticVotes }{' '} 
+          {/* refactor with css */}
+
+        <button onClick={(e) => {this.changeVote(1)}}
+          disabled = { optimisticVotes === 1 }>
+          vote +
+          </button>
+
+      </section>
+    );
+  }
 };
 
 export default VoteCaster;
