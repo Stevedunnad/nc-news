@@ -1,6 +1,9 @@
 import React from 'react';
+import { Link, Router } from '@reach/router'
 import './App.css';
-import Article from './components/Articles'
+import Articles from './components/Articles'
+import Home from './components/Home'
+import Topics from './components/Topics'
 
 function App() {
 
@@ -8,12 +11,17 @@ function App() {
     <div className="App">
       <h1>nc news</h1>
       <nav>
-        <div>Home</div>
-        <div>Articles</div>
-        <div>Topics</div>
+        <Link to="/">Home</Link>
+        <Link to="/articles">Articles</Link>
+        <Link to="/topics">Topics</Link>
       </nav>
       <main>
-        <Article></Article>
+        <Router>
+          <Home path="/" />
+          <Articles path="/articles" />
+          <Topics path="/topics" />
+        </Router>
+        
       </main>
     </div>
   );

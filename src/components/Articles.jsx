@@ -59,7 +59,7 @@ class Articles extends Component {
           {!this.state.topic && <button onClick={() => this.changeSortedBy('topic')}>Topic</button>}
           <button onClick={() => this.changeSortedBy('votes')}>Vote</button>
         </div >
-        {this.state.articles.map(article => <Article article={article}></Article>)}
+        {this.state.articles.map(article => <Article key={article.article_id} article={article}></Article>)}
       </div>
     );
   }

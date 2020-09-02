@@ -20,7 +20,10 @@ export const getSingleArticle = (article_id) => {
   return axiosInstance
   .get('/articles/:article_id')
   .then(res => {
-    console.log('single article', res.data.articles)
-    return res.data.articles
+    console.log('single article ->', res.data.articles.article_id)
+    return res.data.articles.article_id
+  })
+  .catch((error) => {
+    console.log(error)
   })
 }
