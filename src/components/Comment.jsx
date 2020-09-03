@@ -1,5 +1,7 @@
 import React from 'react';
 import VoteCaster from './VoteCaster'
+import PostComment from './PostComment'
+
 
 const comment = ({comment}) => {
   return (
