@@ -15,12 +15,6 @@ class Comments extends Component {
     this.fetchArticleComments()
   }
 
-  // async componentDidUpdate(prevProps, prevState) {
-  //   if (prevState.sortedBy !== this.state.sortedBy || prevState.topic !== this.state.votes) {
-  //     await this.fetchArticleComments(this.state.sortedBy, this.state.votes)
-  //   }
-  // }
-
   fetchArticleComments = async () => {
     const comments = await api.getArticleComments(this.props.id)
 
@@ -36,7 +30,7 @@ class Comments extends Component {
     if (isLoading) return <Loader />
 
     return (
-        <div>
+      <div>
           <h2>Comments:</h2>
         {this.state.comments.map(comment => <Comment key={comment.comment_id} comment={comment} />)}
       </div>

@@ -1,7 +1,6 @@
-import React from 'react';
+import React from 'react'
 import VoteCaster from './VoteCaster'
-import PostComment from './PostComment'
-
+import DeleteButton from './DeleteButton'
 
 const comment = ({comment}) => {
   return (
@@ -10,6 +9,7 @@ const comment = ({comment}) => {
       <h4>{comment.created_at}</h4>
       <p>{comment.body}</p>
       <VoteCaster id={comment.comment_id} votes={comment.votes} type={"comments"} />
+      <DeleteButton comment_id={comment.comment_id}/>
     </article>
   );
 };

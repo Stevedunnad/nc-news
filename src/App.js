@@ -8,7 +8,7 @@ import SingleArticle from './components/SingleArticle'
 
 class App extends React.Component {
 
-  state= {
+  state = {
     author: 'cooljmessy'
   }
 
