@@ -7,7 +7,7 @@ const comment = ({comment}) => {
       <h3>{comment.author}</h3>
       <h4>{comment.created_at}</h4>
       <p>{comment.body}</p>
-      {/* <VoteCaster id={comment_id} votes={votes} type={"comments"} /> */}
+      <VoteCaster id={comment.comment_id} votes={comment.votes} type={"comments"} />
     </article>
   );
 };

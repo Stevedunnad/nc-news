@@ -8,7 +8,7 @@ class VoteCaster extends React.Component {
   }
 
   changeVote = (vote) => {
-    api.patchArticleVotes(this.props.id, vote, this.props.type)
+    api.patchVotes(this.props.id, vote, this.props.type)
     this.setState(currentState => {
       return {optimisticVotes: currentState.optimisticVotes + vote}
     })

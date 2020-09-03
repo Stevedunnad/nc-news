@@ -24,7 +24,7 @@ export const getSingleArticle = (article_id) => {
   })
 }
 
-export const patchArticleVotes = (id, votes, type) => {
+export const patchVotes = (id, votes, type) => {
   return axiosInstance
   .patch(`/${type}/${id}`, { inc_votes: votes })
   .then(({data}) => {
@@ -42,11 +42,3 @@ export const getArticleComments = (article_id) => {
     console.log(error)
   })
 }
-
-// export const patchCommentVotes = (id, votes, type) => {
-//   return axiosInstance
-//   .patch(`/${type}/${id}`, { inc_votes: votes })
-//   .catch((error) => {
-//     console.log(error)
-//   })
-// }

@@ -7,7 +7,6 @@ class Comments extends Component {
 
   state = {
     comments: [],
-    sortedBy: 'created_at',
     isLoading: true,
     votes: 0
   }
@@ -20,13 +19,6 @@ class Comments extends Component {
   //   if (prevState.sortedBy !== this.state.sortedBy || prevState.topic !== this.state.votes) {
   //     await this.fetchArticleComments(this.state.sortedBy, this.state.votes)
   //   }
-  // }
-
-  // changeSortedBy = async (sorted_by) => {
-  //   this.setState({
-  //     sortedBy: sorted_by,
-  //     isLoading: false
-  //   })
   // }
 
   fetchArticleComments = async () => {
