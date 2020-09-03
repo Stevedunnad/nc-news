@@ -41,7 +41,12 @@ export const getArticleComments = (article_id) => {
   })
 }
 
-export const postComment = (article_id) => {
+export const postComment = (article_id, comment_id, created_at, author, body) => {
   return axiosInstance
-  .post(`/articles/${article_id}/comments`)
+  .post(`/articles/${article_id}/comments`, {
+    author,
+    created_at,
+    body
+  })
+  .then(({data: {comment}}) => comment)
 }
