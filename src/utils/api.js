@@ -48,7 +48,7 @@ export const postComment = (article_id, username, body) => {
     body
   })  
   .then(({data: {comment}}) => {
-    console.log(comment)  
+    console.log('post comment', comment)  
   })
 }
 
@@ -56,6 +56,6 @@ export const deleteComment = (comment_id) => {
   return axiosInstance
   .delete(`/comments/${comment_id}`)  
   .then(({data: {comment}}) => {
-    console.log(comment)  
+    console.log('delete comment', comment)  
   })
 }

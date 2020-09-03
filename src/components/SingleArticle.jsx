@@ -3,7 +3,6 @@ import * as api from '../utils/api'
 import Loader from './Loader'
 import VoteCaster from './VoteCaster'
 import Comments from './Comments'
-import PostComment from './PostComment'
 
 export default class SingleArticle extends Component {
 
@@ -13,9 +12,15 @@ export default class SingleArticle extends Component {
   }
 
   componentDidMount() {
+    console.log('mounted article')
+    this.fetchArticle()
+  }
+
+  fetchArticle = () => {
     api.getSingleArticle(this.props.article_id)
     .then(article => {
       this.setState({article, isLoading: false})
+      console.log('this is article', article)
     })
   }
 
@@ -46,10 +51,8 @@ export default class SingleArticle extends Component {
       <p>login to vote!</p>
     )}
 
-    <Comments id={this.props.article_id} />
-    <PostComment id={this.props.article_id}  />
+    <Comments article_id={this.props.article_id} />
     </>
     )
   }
 }
-  

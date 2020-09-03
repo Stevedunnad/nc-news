@@ -8,10 +8,12 @@ export default class PostComment extends Component {
     body: ''
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault()
     const {username, body} = this.state;
-    api.postComment(this.props.id, username, body)}
+    api.postComment(this.props.id, username, body)
+  }
+  
 
     handleChange = (e) => {
       this.setState({body: e.target.value})
