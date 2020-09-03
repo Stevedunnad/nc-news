@@ -8,7 +8,6 @@ export const getAllArticles = (sort_by, topic) => {
   return axiosInstance
   .get('/articles', {params: {sort_by, topic}})
   .then((res) => {
-    console.log('articles by topic', res.data.articles)
     return res.data.articles
   })
   .catch((error) => {
@@ -29,15 +28,17 @@ export const patchArticleVotes = (id, votes, type) => {
   return axiosInstance
   .patch(`/${type}/${id}`, { inc_votes: votes })
   .then(({data}) => {
-    console.log('data from patchArticleVotes->', data)
+  })
+  .catch((error) => {
+    console.log(error)
   })
 }
 
 export const getArticleComments = (article_id, sort_by, votes) => {
   return axiosInstance
   .get(`/articles/${article_id}/comments`, {params: {sort_by, votes}})
-  .then(res => {
-    console.log('res.data.comments ->', res.data.comments)
-    return res.data.comments
+  .then(({data: [comments]}) => comments)
+  .catch((error) => {
+    console.log(error)
   })
 }

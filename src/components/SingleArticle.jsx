@@ -11,7 +11,6 @@ export default class SingleArticle extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.article_id)
     api.getSingleArticle(this.props.article_id)
     .then(article => {
       this.setState({article, isLoading: false})

@@ -12,7 +12,6 @@ class Articles extends Component {
 
   async componentDidMount() {
     this.fetchArticles(this.state.sortedBy, this.state.topic)
-    console.log('the state is', this.state)
   }
 
   async componentDidUpdate(prevProps, prevState) {
