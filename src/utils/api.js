@@ -34,11 +34,19 @@ export const patchArticleVotes = (id, votes, type) => {
   })
 }
 
-export const getArticleComments = (article_id, sort_by, votes) => {
+export const getArticleComments = (article_id) => {
   return axiosInstance
-  .get(`/articles/${article_id}/comments`, {params: {sort_by, votes}})
-  .then(({data: [comments]}) => comments)
+  .get(`/articles/${article_id}/comments`)
+  .then(({data: {comments}}) => comments)
   .catch((error) => {
     console.log(error)
   })
 }
+
+// export const patchCommentVotes = (id, votes, type) => {
+//   return axiosInstance
+//   .patch(`/${type}/${id}`, { inc_votes: votes })
+//   .catch((error) => {
+//     console.log(error)
+//   })
+// }

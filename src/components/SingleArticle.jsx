@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import * as api from '../utils/api'
 import Loader from './Loader'
 import VoteCaster from './VoteCaster'
+import Comments from './Comments'
 
 export default class SingleArticle extends Component {
 
@@ -20,8 +21,8 @@ export default class SingleArticle extends Component {
   render() {
     const {isLoading} = this.state
     if (isLoading) return <Loader />
+
     const {
-      
       article_id, 
       title, 
       body, 
@@ -33,11 +34,12 @@ export default class SingleArticle extends Component {
       <>
       <article>
       <h2>{title}</h2>
+      <h3>{author}</h3>
       <p>{created_at}</p>
-      <p>{author}</p>
       <p>{body}</p>
     </article>
     <VoteCaster id={article_id} votes={votes} type={"articles"} />
+    <Comments id={this.props.article_id} />
     </>
     )
   }
