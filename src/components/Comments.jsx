@@ -3,6 +3,7 @@ import * as api from '../utils/api'
 import Loader from './Loader'
 import Comment from './Comment'
 import PostComment from './PostComment'
+import comment from './Comment';
 
 class Comments extends Component {
 
@@ -18,7 +19,7 @@ class Comments extends Component {
 
   fetchArticleComments = async () => {
     const comments = await api.getArticleComments(this.props.article_id)
-
+    console.log('comments', comments)
     this.setState({
       comments,
       isLoading: false
@@ -34,7 +35,7 @@ class Comments extends Component {
       <div>
           <h2>Comments:</h2>
         {this.state.comments.map(comment => <Comment key={comment.comment_id} comment={comment} />)}
-        <PostComment id={this.props.article_id} />
+        <PostComment id={this.props.article_id} fetchArticleComments={this.fetchArticleComments} />
       </div>
     );
   }

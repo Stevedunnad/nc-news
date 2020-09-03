@@ -35,7 +35,7 @@ export const patchVotes = (id, votes, type) => {
 export const getArticleComments = (article_id) => {
   return axiosInstance
   .get(`/articles/${article_id}/comments`)
-  .then(({data: {comments}}) => comments)
+  .then(({data: {comments}}) => comments.reverse())
   .catch((error) => {
     console.log(error)
   })

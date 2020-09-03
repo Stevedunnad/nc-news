@@ -11,13 +11,13 @@ export default class PostComment extends Component {
   handleSubmit = async (e) => {
     e.preventDefault()
     const {username, body} = this.state;
-    api.postComment(this.props.id, username, body)
+    await api.postComment(this.props.id, username, body)
+    this.props.fetchArticleComments()
   }
-  
 
-    handleChange = (e) => {
-      this.setState({body: e.target.value})
-    }
+  handleChange = (e) => {
+    this.setState({body: e.target.value})
+  }
 
   render() {
     return (
