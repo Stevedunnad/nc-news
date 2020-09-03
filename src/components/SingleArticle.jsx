@@ -3,6 +3,7 @@ import * as api from '../utils/api'
 import Loader from './Loader'
 import VoteCaster from './VoteCaster'
 import Comments from './Comments'
+import PostComment from './PostComment'
 
 export default class SingleArticle extends Component {
 
@@ -40,6 +41,7 @@ export default class SingleArticle extends Component {
     </article>
     <VoteCaster id={article_id} votes={votes} type={"articles"} />
     <Comments id={this.props.article_id} />
+    <PostComment />
     </>
     )
   }
