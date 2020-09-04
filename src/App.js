@@ -5,33 +5,36 @@ import Articles from './components/Articles'
 import Home from './components/Home'
 import Topics from './components/Topics'
 import SingleArticle from './components/SingleArticle'
+import ToggleViewer from './components/ToggleViewer'
 // import Error from './components/SingleArticle'
 
 class App extends React.Component {
 
   state = {
-    author: 'cooljmessy'
+    author: 'cooljmessy',
+
+  }
+
+  handleClick = (e) => {
+    !this.state.author.length ? this.setState({author: 'cooljmessy'}) 
+    : this.setState({author: ''})
   }
 
   render() {
-    const { user } = this.state.author;
+    const { author } = this.state;
   return (
     <div className="App">
       <h1>nc news</h1>
-      <p>User: {user}</p>
-      <button onClick={() => this.setState({user: null})}>
-        log out
-      </button>
+      <p>User: {this.state.author}</p>
+
+      <button onClick={this.handleClick}>{ author ? "logout" : "login" }</button>
       <nav>
-        <Link to="/">Home</Link>
-        <Link to="/articles">Articles</Link>
-        <Link to="/topics">Topics</Link>
+        <Link to="/articles">All Articles</Link>
       </nav>
       <main>
         <Router>
           <Home path="/" />
           <Articles path="/articles" />
-          <Topics path="/topics" />
           <SingleArticle path="/articles/:article_id" />
           {/* <Error path="" /> */}
         </Router>
@@ -42,5 +45,4 @@ class App extends React.Component {
   }
 }
   
-
 export default App;
