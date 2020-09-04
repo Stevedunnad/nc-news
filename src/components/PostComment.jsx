@@ -15,10 +15,8 @@ export default class PostComment extends Component {
   handleSubmit = async (e) => {
     e.preventDefault()
     this.setState({body: ''})
-    //need to empty textarea on submit
-    //need to stop user submitting empty textarea or disable button until textarea/body has length
     const {username, body} = this.state;
-    await api.postComment(this.props.id, username, body)
+    this.state.body.length && await api.postComment(this.props.id, username, body)
     this.props.fetchArticleComments()
   }
 
