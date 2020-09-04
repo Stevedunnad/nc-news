@@ -3,7 +3,7 @@ import * as api from '../utils/api'
 import Loader from './Loader'
 import Comment from './Comment'
 import PostComment from './PostComment'
-import comment from './Comment';
+// import comment from './Comment';
 
 class Comments extends Component {
 
@@ -19,7 +19,6 @@ class Comments extends Component {
 
   fetchArticleComments = async () => {
     const comments = await api.getArticleComments(this.props.article_id)
-    console.log('comments', comments)
     this.setState({
       comments,
       isLoading: false

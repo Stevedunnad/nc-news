@@ -13,7 +13,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { user } = this.state;
+    const { user } = this.state.author;
   return (
     <div className="App">
       <h1>nc news</h1>
