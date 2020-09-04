@@ -3,7 +3,6 @@ import { Link, Router } from '@reach/router'
 import './App.css';
 import Articles from './components/Articles'
 import Home from './components/Home'
-import Topics from './components/Topics'
 import SingleArticle from './components/SingleArticle'
 import ToggleViewer from './components/ToggleViewer'
 // import Error from './components/SingleArticle'
@@ -11,23 +10,23 @@ import ToggleViewer from './components/ToggleViewer'
 class App extends React.Component {
 
   state = {
-    author: 'cooljmessy',
+    user: 'cooljmessy',
 
   }
 
   handleClick = (e) => {
-    !this.state.author.length ? this.setState({author: 'cooljmessy'}) 
-    : this.setState({author: ''})
+    !this.state.user.length ? this.setState({user: 'cooljmessy'}) 
+    : this.setState({user: ''})
   }
 
   render() {
-    const { author } = this.state;
+    const { user } = this.state;
   return (
     <div className="App">
       <h1>nc news</h1>
-      <p>User: {this.state.author}</p>
+      <p>User: {user}</p>
 
-      <button onClick={this.handleClick}>{ author ? "logout" : "login" }</button>
+      <button onClick={this.handleClick}>{ user ? "logout" : "login" }</button>
       <nav>
         <Link to="/articles">All Articles</Link>
       </nav>

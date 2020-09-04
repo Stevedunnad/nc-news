@@ -62,12 +62,14 @@ export default class SingleArticle extends Component {
       <p>{created_at}</p>
       <p>{body}</p>
     </article>
+{/* 
+    {console.log('this.props.user ->', this.props.user)}
 
-    {this.props.author ? (
+    {this.props.user.length ? ( */}
     <VoteCaster id={article_id} votes={votes} type={"articles"} />
-    ) : (
+    {/* ) : (
       <p>login to vote!</p>
-    )}
+    )} */}
 
     <Comments article_id={this.props.article_id} />
     </>
