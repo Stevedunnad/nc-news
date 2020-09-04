@@ -5,6 +5,7 @@ import Articles from './components/Articles'
 import Home from './components/Home'
 import Topics from './components/Topics'
 import SingleArticle from './components/SingleArticle'
+// import Error from './components/SingleArticle'
 
 class App extends React.Component {
 
@@ -32,6 +33,7 @@ class App extends React.Component {
           <Articles path="/articles" />
           <Topics path="/topics" />
           <SingleArticle path="/articles/:article_id" />
+          {/* <Error path="" /> */}
         </Router>
         
       </main>

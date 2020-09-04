@@ -3,37 +3,49 @@ import * as api from '../utils/api'
 import Loader from './Loader'
 import VoteCaster from './VoteCaster'
 import Comments from './Comments'
-import Error from './Error'
+// import Error from './Error'
 
 export default class SingleArticle extends Component {
 
   state = {
     article: {},
     isLoading: true,
+    // err: null
   }
 
   componentDidMount() {
     console.log('mounted article')
-    this.fetchArticle()
-  }
-
-  fetchArticle = () => {
+    // this.fetchArticle()
     api.getSingleArticle(this.props.article_id)
     .then(article => {
       this.setState({article, isLoading: false})
     })
-    .catch(({response}) => {
-      this.setState({
-          isLoading: false,
-          err: {msg: response.data.msg, status: response.status}
-        })
-      })
+    // .catch((err) => {
+    //   console.dir('**', err.response)
+    //   this.setState({
+    //       isLoading: false,
+    //       err: {msg: err.response.data.msg, status: err.response.status}
+    //     })
+    //   })
   }
 
+  // fetchArticle = () => {
+  //   api.getSingleArticle(this.props.article_id)
+  //   .then(article => {
+  //     this.setState({article, isLoading: false})
+  //   })
+  //   .catch(({response}) => {
+  //     this.setState({
+  //         isLoading: false,
+  //         err: {msg: response.data.msg, status: response.status}
+  //       })
+  //     })
+  // }
+
   render() {
-    const {isLoading} = this.state
+    const {isLoading, err} = this.state
     if (isLoading) return <Loader />
-    if (err) return <Error {...err}/>
+    // if (err) return <Error {...err}/>
     const {
       article_id, 
       title, 
