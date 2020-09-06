@@ -5,7 +5,7 @@ import Articles from './components/Articles'
 import Home from './components/Home'
 import SingleArticle from './components/SingleArticle'
 import ToggleViewer from './components/ToggleViewer'
-// import Error from './components/SingleArticle'
+import ErrorBoundary from './components/ErrorBoundary';
 
 class App extends React.Component {
 
@@ -20,6 +20,8 @@ class App extends React.Component {
   }
 
   render() {
+    console.log('state->', this.state)
+
     const { user } = this.state;
   return (
     <div className="App">
@@ -31,12 +33,14 @@ class App extends React.Component {
         <Link to="/articles">All Articles</Link>
       </nav>
       <main>
+        <ErrorBoundary>
         <Router>
           <Home path="/" />
           <Articles path="/articles" />
-          <SingleArticle path="/articles/:article_id" />
+          <SingleArticle path="/articles/:article_id" state={user} />
           {/* <Error path="" /> */}
         </Router>
+        </ErrorBoundary>
         
       </main>
     </div>

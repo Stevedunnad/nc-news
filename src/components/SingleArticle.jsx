@@ -3,10 +3,10 @@ import * as api from '../utils/api'
 import Loader from './Loader'
 import VoteCaster from './VoteCaster'
 import Comments from './Comments'
+import DeleteButton from './DeleteButton'
 // import Error from './Error'
 
 export default class SingleArticle extends Component {
-
   state = {
     article: {},
     isLoading: true,
@@ -43,6 +43,7 @@ export default class SingleArticle extends Component {
   // }
 
   render() {
+    console.log('state from parent->', this.props.state)
     const {isLoading, err} = this.state
     if (isLoading) return <Loader />
     // if (err) return <Error {...err}/>
@@ -62,16 +63,17 @@ export default class SingleArticle extends Component {
       <p>{created_at}</p>
       <p>{body}</p>
     </article>
-{/* 
-    {console.log('this.props.user ->', this.props.user)}
 
-    {this.props.user.length ? ( */}
+    {/* {console.log('this.props.user ->', this.props.user)} */}
+
+    {this.props.state === "cooljmessy" ? (
     <VoteCaster id={article_id} votes={votes} type={"articles"} />
-    {/* ) : (
-      <p>login to vote!</p>
-    )} */}
+      ) : (
+        <p>login to vote!</p>
+      )}
 
-    <Comments article_id={this.props.article_id} />
+    <Comments article_id={this.props.article_id} state={this.props.state}/>
+    
     </>
     )
   }
