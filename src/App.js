@@ -4,8 +4,6 @@ import './App.css';
 import Articles from './components/Articles'
 import Home from './components/Home'
 import SingleArticle from './components/SingleArticle'
-import ToggleViewer from './components/ToggleViewer'
-import ErrorBoundary from './components/ErrorBoundary';
 
 class App extends React.Component {
 
@@ -15,37 +13,35 @@ class App extends React.Component {
   }
 
   handleClick = (e) => {
-    !this.state.user.length ? this.setState({user: 'cooljmessy'}) 
-    : this.setState({user: ''})
+    !this.state.user.length ? this.setState({ user: 'cooljmessy' })
+      : this.setState({ user: '' })
   }
 
   render() {
     console.log('state->', this.state)
 
     const { user } = this.state;
-  return (
-    <div className="App">
-      <h1>nc news</h1>
-      <p>User: {user}</p>
+    return (
+      <div className="App">
+        <h1>nc news</h1>
+        <p>User: {user}</p>
 
-      <button onClick={this.handleClick}>{ user ? "logout" : "login" }</button>
-      <nav>
-        <Link to="/articles">All Articles</Link>
-      </nav>
-      <main>
-        <ErrorBoundary>
-        <Router>
-          <Home path="/" />
-          <Articles path="/articles" />
-          <SingleArticle path="/articles/:article_id" state={user} />
-          {/* <Error path="" /> */}
-        </Router>
-        </ErrorBoundary>
-        
-      </main>
-    </div>
-  );
+        <button onClick={this.handleClick}>{user ? "logout" : "login"}</button>
+        <nav>
+          <Link to="/articles">All Articles</Link>
+        </nav>
+        <main>
+          <Router>
+            <Home path="/" />
+            <Articles path="/articles" />
+            <SingleArticle path="/articles/:article_id" state={user} />
+            {/* <Error path="" /> */}
+          </Router>
+
+        </main>
+      </div>
+    );
   }
 }
-  
+
 export default App;
