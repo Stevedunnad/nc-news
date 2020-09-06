@@ -37,7 +37,7 @@ class Comments extends Component {
       <div>
           <h2>Comments:</h2>
         {this.state.comments.map(comment => 
-        <Comment key={comment.comment_id} comment={comment} fetchArticleComments={this.fetchArticleComments} user="cooljmessy"/>)}
+        <Comment key={comment.comment_id} comment={comment} fetchArticleComments={this.fetchArticleComments} />)}
         <PostComment id={this.props.article_id} fetchArticleComments={this.fetchArticleComments} />
       </div>
     );

@@ -1,12 +1,13 @@
 import React from 'react'
 import VoteCaster from './VoteCaster'
 import DeleteButton from './DeleteButton'
+import {UserContext} from '../user-context'
 
-const comment = ({comment, fetchArticleComments, user}) => {
-  
+const Comment = ({comment, fetchArticleComments}) => {
+  const user = React.useContext(UserContext)
   return (
-
     <article> 
+      user is {user}
       <h3>{comment.author}</h3>
       <h4>{comment.created_at}</h4>
       <p>{comment.body}</p>
@@ -20,4 +21,4 @@ const comment = ({comment, fetchArticleComments, user}) => {
   );
 };
 
-export default comment;
+export default Comment;
